@@ -1,0 +1,675 @@
+{
+	"info": {
+		"_postman_id": "f0bf2da9-e685-4a2a-9742-73d73a64672d",
+		"name": "USA Data API Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36911405"
+	},
+	"item": [
+		{
+			"name": "Get Population by Nation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.test('Schema is valid', function() {\r",
+							"  var schema = {\r",
+							"    \"type\": \"object\",\r",
+							"    \"properties\": {\r",
+							"      \"data\": {\r",
+							"        \"type\": \"array\",\r",
+							"        \"items\": {\r",
+							"          \"type\": \"object\",\r",
+							"          \"properties\": {\r",
+							"            \"Nation\": { \"type\": \"string\" },\r",
+							"            \"ID Nation\": { \"type\": \"string\" },\r",
+							"            \"Year\": { \"type\": \"number\" },\r",
+							"            \"Population\": { \"type\": \"number\" }\r",
+							"          },\r",
+							"          \"required\": [\"Nation\", \"ID Nation\", \"Year\", \"Population\"]\r",
+							"        }\r",
+							"      }\r",
+							"    },\r",
+							"    \"required\": [\"data\"]\r",
+							"  };\r",
+							"  pm.expect(tv4.validate(jsonData, schema)).to.be.true;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}?drilldowns={{drilldowns}}&measures={{measures}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"query": [
+						{
+							"key": "drilldowns",
+							"value": "{{drilldowns}}"
+						},
+						{
+							"key": "measures",
+							"value": "{{measures}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Population by State",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.test('Schema is valid', function() {\r",
+							"  var schema = {\r",
+							"    \"type\": \"object\",\r",
+							"    \"properties\": {\r",
+							"      \"data\": {\r",
+							"        \"type\": \"array\",\r",
+							"        \"items\": {\r",
+							"          \"type\": \"object\",\r",
+							"          \"properties\": {\r",
+							"            \"State\": { \"type\": \"string\" },\r",
+							"            \"ID State\": { \"type\": \"string\" },\r",
+							"            \"Year\": { \"type\": \"number\" },\r",
+							"            \"Population\": { \"type\": \"number\" }\r",
+							"          },\r",
+							"          \"required\": [\"State\", \"ID State\", \"Year\", \"Population\"]\r",
+							"        }\r",
+							"      }\r",
+							"    },\r",
+							"    \"required\": [\"data\"]\r",
+							"  };\r",
+							"  pm.expect(tv4.validate(jsonData, schema)).to.be.true;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}?drilldowns=State&measures={{measures}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"query": [
+						{
+							"key": "drilldowns",
+							"value": "State"
+						},
+						{
+							"key": "measures",
+							"value": "{{measures}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Median Household Income by State",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.test('Schema is valid', function() {\r",
+							"  var schema = {\r",
+							"    \"type\": \"object\",\r",
+							"    \"properties\": {\r",
+							"      \"data\": {\r",
+							"        \"type\": \"array\",\r",
+							"        \"items\": {\r",
+							"          \"type\": \"object\",\r",
+							"          \"properties\": {\r",
+							"            \"State\": { \"type\": \"string\" },\r",
+							"            \"ID State\": { \"type\": \"string\" },\r",
+							"            \"Year\": { \"type\": \"number\" },\r",
+							"            \"Median Household Income\": { \"type\": \"number\" }\r",
+							"          },\r",
+							"          \"required\": [\"State\", \"ID State\", \"Year\", \"Median Household Income\"]\r",
+							"        }\r",
+							"      }\r",
+							"    },\r",
+							"    \"required\": [\"data\"]\r",
+							"  };\r",
+							"  pm.expect(tv4.validate(jsonData, schema)).to.be.true;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}?drilldowns=State&measures=Median Household Income",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"query": [
+						{
+							"key": "drilldowns",
+							"value": "State"
+						},
+						{
+							"key": "measures",
+							"value": "Median Household Income"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Employment by Occupation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.test('Schema is valid', function() {\r",
+							"  var schema = {\r",
+							"    \"type\": \"object\",\r",
+							"    \"properties\": {\r",
+							"      \"data\": {\r",
+							"        \"type\": \"array\",\r",
+							"        \"items\": {\r",
+							"          \"type\": \"object\",\r",
+							"          \"properties\": {\r",
+							"            \"Occupation\": { \"type\": \"string\" },\r",
+							"            \"ID Occupation\": { \"type\": \"string\" },\r",
+							"            \"Year\": { \"type\": \"number\" },\r",
+							"            \"Employment\": { \"type\": \"number\" }\r",
+							"          },\r",
+							"          \"required\": [\"Occupation\", \"ID Occupation\", \"Year\", \"Employment\"]\r",
+							"        }\r",
+							"      }\r",
+							"    },\r",
+							"    \"required\": [\"data\"]\r",
+							"  };\r",
+							"  pm.expect(tv4.validate(jsonData, schema)).to.be.true;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}?drilldowns=Occupation&measures=Employment",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"query": [
+						{
+							"key": "drilldowns",
+							"value": "Occupation"
+						},
+						{
+							"key": "measures",
+							"value": "Employment"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get GDP by State",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.test('Schema is valid', function() {\r",
+							"  var schema = {\r",
+							"    \"type\": \"object\",\r",
+							"    \"properties\": {\r",
+							"      \"data\": {\r",
+							"        \"type\": \"array\",\r",
+							"        \"items\": {\r",
+							"          \"type\": \"object\",\r",
+							"          \"properties\": {\r",
+							"            \"State\": { \"type\": \"string\" },\r",
+							"            \"ID State\": { \"type\": \"string\" },\r",
+							"            \"Year\": { \"type\": \"number\" },\r",
+							"            \"GDP\": { \"type\": \"number\" }\r",
+							"          },\r",
+							"          \"required\": [\"State\", \"ID State\", \"Year\", \"GDP\"]\r",
+							"        }\r",
+							"      }\r",
+							"    },\r",
+							"    \"required\": [\"data\"]\r",
+							"  };\r",
+							"  pm.expect(tv4.validate(jsonData, schema)).to.be.true;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}?drilldowns=State&measures=GDP",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"query": [
+						{
+							"key": "drilldowns",
+							"value": "State"
+						},
+						{
+							"key": "measures",
+							"value": "GDP"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Educational Attainment by State",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.test('Schema is valid', function() {\r",
+							"  var schema = {\r",
+							"    \"type\": \"object\",\r",
+							"    \"properties\": {\r",
+							"      \"data\": {\r",
+							"        \"type\": \"array\",\r",
+							"        \"items\": {\r",
+							"          \"type\": \"object\",\r",
+							"          \"properties\": {\r",
+							"            \"State\": { \"type\": \"string\" },\r",
+							"            \"ID State\": { \"type\": \"string\" },\r",
+							"            \"Year\": { \"type\": \"number\" },\r",
+							"            \"Educational Attainment\": { \"type\": \"string\" }\r",
+							"          },\r",
+							"          \"required\": [\"State\", \"ID State\", \"Year\", \"Educational Attainment\"]\r",
+							"        }\r",
+							"      }\r",
+							"    },\r",
+							"    \"required\": [\"data\"]\r",
+							"  };\r",
+							"  pm.expect(tv4.validate(jsonData, schema)).to.be.true;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}?drilldowns=State&measures=Educational Attainment",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"query": [
+						{
+							"key": "drilldowns",
+							"value": "State"
+						},
+						{
+							"key": "measures",
+							"value": "Educational Attainment"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Poverty by State",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.test('Schema is valid', function() {\r",
+							"  var schema = {\r",
+							"    \"type\": \"object\",\r",
+							"    \"properties\": {\r",
+							"      \"data\": {\r",
+							"        \"type\": \"array\",\r",
+							"        \"items\": {\r",
+							"          \"type\": \"object\",\r",
+							"          \"properties\": {\r",
+							"            \"State\": { \"type\": \"string\" },\r",
+							"            \"ID State\": { \"type\": \"string\" },\r",
+							"            \"Year\": { \"type\": \"number\" },\r",
+							"            \"Poverty\": { \"type\": \"number\" }\r",
+							"          },\r",
+							"          \"required\": [\"State\", \"ID State\", \"Year\", \"Poverty\"]\r",
+							"        }\r",
+							"      }\r",
+							"    },\r",
+							"    \"required\": [\"data\"]\r",
+							"  };\r",
+							"  pm.expect(tv4.validate(jsonData, schema)).to.be.true;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}?drilldowns=State&measures=Poverty",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"query": [
+						{
+							"key": "drilldowns",
+							"value": "State"
+						},
+						{
+							"key": "measures",
+							"value": "Poverty"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Housing Units by State",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}?drilldowns=State&measures=Housing Units",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"query": [
+						{
+							"key": "drilldowns",
+							"value": "State"
+						},
+						{
+							"key": "measures",
+							"value": "Housing Units"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Veterans by State",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.test('Schema is valid', function() {\r",
+							"  var schema = {\r",
+							"    \"type\": \"object\",\r",
+							"    \"properties\": {\r",
+							"      \"data\": {\r",
+							"        \"type\": \"array\",\r",
+							"        \"items\": {\r",
+							"          \"type\": \"object\",\r",
+							"          \"properties\": {\r",
+							"            \"State\": { \"type\": \"string\" },\r",
+							"            \"ID State\": { \"type\": \"string\" },\r",
+							"            \"Year\": { \"type\": \"number\" },\r",
+							"            \"Veterans\": { \"type\": \"number\" }\r",
+							"          },\r",
+							"          \"required\": [\"State\", \"ID State\", \"Year\", \"Veterans\"]\r",
+							"        }\r",
+							"      }\r",
+							"    },\r",
+							"    \"required\": [\"data\"]\r",
+							"  };\r",
+							"  pm.expect(tv4.validate(jsonData, schema)).to.be.true;\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}?drilldowns=State&measures=Veterans",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"query": [
+						{
+							"key": "drilldowns",
+							"value": "State"
+						},
+						{
+							"key": "measures",
+							"value": "Veterans"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Businesses by State",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.test('Schema is valid', function() {\r",
+							"  var schema = {\r",
+							"    \"type\": \"object\",\r",
+							"    \"properties\": {\r",
+							"      \"data\": {\r",
+							"        \"type\": \"array\",\r",
+							"        \"items\": {\r",
+							"          \"type\": \"object\",\r",
+							"          \"properties\": {\r",
+							"            \"State\": { \"type\": \"string\" },\r",
+							"            \"ID State\": { \"type\": \"string\" },\r",
+							"            \"Year\": { \"type\": \"number\" },\r",
+							"            \"Businesses\": { \"type\": \"number\" }\r",
+							"          },\r",
+							"          \"required\": [\"State\", \"ID State\", \"Year\", \"Businesses\"]\r",
+							"        }\r",
+							"      }\r",
+							"    },\r",
+							"    \"required\": [\"data\"]\r",
+							"  };\r",
+							"  pm.expect(tv4.validate(jsonData, schema)).to.be.true;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}?drilldowns=State&measures=Businesses",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"query": [
+						{
+							"key": "drilldowns",
+							"value": "State"
+						},
+						{
+							"key": "measures",
+							"value": "Businesses"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://datausa.io/api/data",
+			"type": "string"
+		},
+		{
+			"key": "drilldowns",
+			"value": "Nation",
+			"type": "string"
+		},
+		{
+			"key": "measures",
+			"value": "Population",
+			"type": "string"
+		}
+	]
+}
